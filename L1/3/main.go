@@ -15,7 +15,7 @@ func main() {
 	for i := 0; i < len(arr); i++ {
 		result += <-powResult //чтение квадрата и прибавление его к сумме всех квадратов
 	}
-	close(powResult)
+	close(powResult) //закрытия канала
 	fmt.Println("result =", result)
 
 }

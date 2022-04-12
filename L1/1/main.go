@@ -8,10 +8,13 @@ func main() {
 	act.Human = Human{name: "Vladimir", age: 24, sex: "male"}
 
 	//использование методов унаследованных от Human в структуре Action (act)
+
+	act.Walk(5)
+
 	act.NameInfo()
 	act.AgeInfo()
 	act.SexInfo()
-	act.Walk(5)
+	act.milageInfo()
 
 }
 
@@ -36,6 +39,10 @@ func (h Human) SexInfo() {
 	fmt.Println(h.sex)
 }
 
+func (h Human) milageInfo() {
+	fmt.Println(h.mileage)
+}
+
 //-------------------------------
 
 type Action struct {
@@ -43,7 +50,7 @@ type Action struct {
 }
 
 //-----методы типа Action--------
-func (a Action) Walk(distance float64) {
+func (a *Action) Walk(distance float64) {
 	fmt.Println(a.name, "погулял", distance, "км")
 	a.mileage += distance
 }
