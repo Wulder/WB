@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	arr := [5]int{2, 4, 6, 8, 10}
-	powResult := make(chan int, len(arr)) //создание бурезированного канала с размером буфера равным длинне массива чисел
+	powResult := make(chan int, len(arr)) //создание буферизированного канала с размером буфера равным длинне массива чисел
 	for _, i := range arr {
 		go func(n int) {
 			powResult <- Pow(n) //запись квадрата числа в канал
