@@ -55,7 +55,7 @@ func SetupCloseHandler(cancel context.CancelFunc) {
 	go func() {
 
 		<-c
-		cancel()
+		cancel() //вызов завершения контекста (горутины подписаны на этот контекст)
 		fmt.Println("\r- Ctrl+C pressed in Terminal")
 		time.Sleep(time.Second * 1)
 		os.Exit(0)

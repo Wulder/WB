@@ -1,23 +1,25 @@
 package main
 
-import (
-	"fmt"
-	"runtime"
-	"time"
-)
+import "fmt"
 
 func main() {
 
-	runtime.GOMAXPROCS(4)
-	for i := 0; i < 5; i++ {
-		go func(id int) {
+	bok := Book{Str: "HIHIHI"}
+	Test(&bok)
+}
 
-			fmt.Println(id)
-			runtime.LockOSThread()
-			time.Sleep(time.Second * 2)
+type Stringer interface {
+	String(i int) string
+}
 
-		}(i)
-	}
-	fmt.Println(runtime.NumCPU(), runtime.GOMAXPROCS(-1))
-	time.Sleep(time.Second * 2)
+type Book struct {
+	Str string
+}
+
+func (b *Book) String(i int) string {
+	return b.Str
+}
+
+func Test(s Stringer) {
+	fmt.Println(s.String(1))
 }
