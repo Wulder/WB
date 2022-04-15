@@ -1,25 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 
-	bok := Book{Str: "HIHIHI"}
-	Test(&bok)
-}
-
-type Stringer interface {
-	String(i int) string
-}
-
-type Book struct {
-	Str string
-}
-
-func (b *Book) String(i int) string {
-	return b.Str
-}
-
-func Test(s Stringer) {
-	fmt.Println(s.String(1))
+	str := "abcd абвг"
+	for k, v := range []rune(str) {
+		fmt.Println(k, "-", v)
+	}
+	fmt.Println(strings.Repeat("-", 20))
+	for k, v := range []byte(str) {
+		fmt.Println(k, "-", v)
+	}
 }
