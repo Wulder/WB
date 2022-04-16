@@ -1,18 +1,19 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
+import "fmt"
 
+func update(p *int) {
+	b := 2
+	*p = b
+	fmt.Println(p)
+}
 func main() {
+	var (
+		a = 1
+		p = &a
+	)
+	fmt.Println(p)
+	update(p)
+	fmt.Println(p)
 
-	str := "abcd абвг"
-	for k, v := range []rune(str) {
-		fmt.Println(k, "-", v)
-	}
-	fmt.Println(strings.Repeat("-", 20))
-	for k, v := range []byte(str) {
-		fmt.Println(k, "-", v)
-	}
 }

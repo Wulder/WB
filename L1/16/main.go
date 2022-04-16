@@ -8,31 +8,32 @@ import (
 
 func main() {
 
-	var arr [1000]int
-
+	var arr []int
 	rand.Seed(time.Now().UnixNano())
-	for i := 0; i < len(arr); i++ { //заполнение массива рандомными значениями
-		arr[i] = rand.Intn(100000)
+	for i := 0; i < 10; i++ { //заполнение массива рандомными значениями
+		arr = append(arr, rand.Intn(100))
 	}
 
-	fmt.Println(quickSort(arr[:]))
+	fmt.Println(arr)
+	quickSort(arr)
+
+	fmt.Println(arr)
 }
 
-func quickSort(a []int) []int {
-
+func quickSort(a []int) {
 	if len(a) < 2 {
-		return a
+		return
 	}
 
 	left, right := 0, len(a)-1
 
-	pivotIndex := rand.Int() % len(a)
+	pivot := rand.Int() % len(a)
 
-	a[pivotIndex], a[right] = a[right], a[pivotIndex]
+	a[pivot], a[right] = a[right], a[pivot]
 
-	for i := range a {
+	for i, _ := range a {
 		if a[i] < a[right] {
-			a[i], a[left] = a[left], a[i]
+			a[left], a[i] = a[i], a[left]
 			left++
 		}
 	}
@@ -42,5 +43,5 @@ func quickSort(a []int) []int {
 	quickSort(a[:left])
 	quickSort(a[left+1:])
 
-	return a
+	return
 }
